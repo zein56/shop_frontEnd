@@ -10,7 +10,7 @@ function Login({ OnContentChange }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:4000/LogIn', { email,password })
+        axios.post(`${process.env.REACT_APP_API_URL}/LogIn`, { email,password })
             .then((response) => {
                 if (response.data.value) {
                     setResult(response.data.message);

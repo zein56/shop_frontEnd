@@ -26,7 +26,7 @@ function Cell({ handleTabClick }) {
     const [images,setImages] = useState([]);
 
     const CarsInfoSelections = () => {  
-        axios.get('http://localhost:4000/CarsInfoSelections')
+        axios.get(`${process.env.REACT_APP_API_URL}/CarsInfoSelections`)
         .then((response) => {
             setCarsInfo(response.data);
             //console.log(response.data);
@@ -70,7 +70,7 @@ function Cell({ handleTabClick }) {
         if (canAdd) {
             try {
                 // Araba bilgilerini ekle
-                const response = await axios.post('http://localhost:4000/addCarToCell', info);
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/addCarToCell`, info);
                 //console.log('The car was added to cell!', response.data);
                 newCarId = response.data.id; // Arabaya ait ID'yi al
      
@@ -85,7 +85,7 @@ function Cell({ handleTabClick }) {
 
                     // Resimleri gönder
                     try {
-                        const res = await axios.post('http://localhost:4000/upload', formData, {
+                        const res = await axios.post(`${process.env.REACT_APP_API_URL}/upload`, formData, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',  // Dosya gönderirken gerekli header
                             },
@@ -114,7 +114,7 @@ function Cell({ handleTabClick }) {
             column: column,    
             id: id
         };     
-        axios.post('http://localhost:4000/carsMake-model', Data)  
+        axios.post(`${process.env.REACT_APP_API_URL}/carsMake-model`, Data)  
         .then((response) => {  
             if (table === 'makes') setMakes(response.data);
             if (table === 'models') setModels(response.data);  
@@ -131,7 +131,7 @@ function Cell({ handleTabClick }) {
         }
 
         let id = loginInfo.id; 
-        axios.post('http://localhost:4000/user',{id})     
+        axios.post(`${process.env.REACT_APP_API_URL}/user`,{id})     
         .then((response) => {
             setUserInfo(response.data);
             setCeller(response.data.name+' '+response.data.lastName);

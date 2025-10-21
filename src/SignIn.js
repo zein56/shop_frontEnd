@@ -42,7 +42,7 @@ function SignIn({ handleTabClick }) {
         let formIsValid = true;
         if (EmailTester(email)) {
           setEmailError('');
-          axios.post('http://localhost:4000/checkEmail', { email })
+          axios.post(`${process.env.REACT_APP_API_URL}/checkEmail`, { email })
             .then((response) => {
                 //setEmailError(response.data.message)
                 if (!response.data.value) 
@@ -89,11 +89,11 @@ function SignIn({ handleTabClick }) {
                 email:email,
                 userPassword:password
             };
-            axios.post('http://localhost:4000/addUser', userData)
+            axios.post(`${process.env.REACT_APP_API_URL}/addUser`, userData)
                 .then((response) => {
                     console.log('Veri başarıyla eklendi:', response.data);
                     if (response) {
-                        axios.post('http://localhost:4000/LogIn', { email,password })
+                        axios.post(`${process.env.REACT_APP_API_URL}/LogIn`, { email,password })
                     .then((response) => {
                         if (response.data.value) {
                             let userinfo = response.data.userInfo

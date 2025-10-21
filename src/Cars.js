@@ -10,7 +10,7 @@ function Cars({ handleTabClick, search }) {
     const getCarImages = (id) => {
         let data = { carId: id };
         axios
-            .post("http://localhost:4000/carImages", data)
+            .post(`${process.env.REACT_APP_API_URL}/carImages`, data)
             .then((response) => {
                 setCarsImages((prevImages) => [
                     ...prevImages,
@@ -24,7 +24,7 @@ function Cars({ handleTabClick, search }) {
 
     const getAllCars = () => {
         axios
-            .get("http://localhost:4000/getAllCars")
+            .get(`${process.env.REACT_APP_API_URL}/getAllCars`)
             .then((response) => {
                 setCars(response.data);
                 response.data.forEach((car) => getCarImages(car.id));
@@ -95,7 +95,7 @@ function Cars({ handleTabClick, search }) {
                     {carImg ? (
                         <div className="image" key={carImg.id}>
                             <img
-                                src={`http://localhost:4000/uploads/${carImg.imageurl}`}
+                                src={`${process.env.REACT_APP_API_URL}/uploads/${carImg.imageurl}`}
                                 alt="Car"
                             />
                         </div>

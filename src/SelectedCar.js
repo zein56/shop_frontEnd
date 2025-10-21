@@ -9,11 +9,11 @@ function SelectedCar({ handleTabClick }){
     const [isCarCeller,setIsCarCeller] = useState(0);
     let carId = { carId:Number(localStorage.getItem('selected-car'))};
     useEffect(() => { 
-        axios.post("http://localhost:4000/getCar",carId)
+        axios.post(`${process.env.REACT_APP_API_URL}/getCar`,carId)
         .then((response) => {
             setCarInfo(response.data.carInfo); 
             setCarImages(response.data.carImages);
-            setSelectedImg(`http://localhost:4000/uploads/${response.data.carImages[0]}`);
+            setSelectedImg(`${process.env.REACT_APP_API_URL}/uploads/${response.data.carImages[0]}`);
             //console.log(response.data);
             if (JSON.parse(localStorage.getItem('Login')).id ===  response.data.carInfo.cellerId)  {
                 //console.log("aloooo ",JSON.parse(localStorage.getItem('Login')).id, " - ", response.data.carInfo.id )
@@ -28,7 +28,7 @@ function SelectedCar({ handleTabClick }){
         let carId = { carId:Number(localStorage.getItem('selected-car'))};
         ///console.log(carId)
         axios
-            .delete("http://localhost:4000/deleteCar",{data:carId})
+            .delete(`${process.env.REACT_APP_API_URL}/deleteCar`,{data:carId})
             .then((response) => {
                 window.location.reload();
             })
@@ -48,8 +48,8 @@ function SelectedCar({ handleTabClick }){
                             <div className='allImgs'>
                             {carImages.map((img,index) => {
                                     return(
-                                        <img key={index} src={`http://localhost:4000/uploads/${img}`} alt="Car" onClick={()=>{
-                                            setSelectedImg(`http://localhost:4000/uploads/${img}`);
+                                        <img key={index} src={`${process.env.REACT_APP_API_URL}/uploads/${img}`} alt="Car" onClick={()=>{
+                                            setSelectedImg(`${process.env.REACT_APP_API_URL}/uploads/${img}`);
                                         }} />
                                     )
                                 })}

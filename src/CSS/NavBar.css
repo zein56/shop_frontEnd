@@ -1,0 +1,202 @@
+.NavBody{
+    width: 100%;
+    height: 5%;
+    background: #223;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Nav{
+    position: relative;
+    width: 75%;
+    height: 100%;
+    background: #223;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2;
+}
+
+.AppName{
+    background: #112;
+    border-radius: 10px;
+    width: 20%;
+    height: 80%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150%;
+    transition: all 0.2s;
+}
+.AppName:hover ,.settings:hover,.Search input:hover{
+    cursor: pointer;
+    background: #222; 
+}
+.Search{
+    position: relative;
+    width: 60%;
+    height: 80%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150%;
+}
+.Search input{
+    width: 90%;
+    height: 100%;
+    background: #112;
+    border: none;
+    outline: none;
+    color: aliceblue;
+    font-size: 75%; 
+    border-radius: 10px;
+}
+
+.searchIcon{
+    position: absolute;
+    left: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+    opacity: 1;
+    color: gray;
+}
+.Search input:focus ~ .searchIcon {
+    animation: moveSearchIcon 0.9s ease-in-out forwards;/* bunu focus ta koydugumda hic hareket etmiyor*/
+
+}
+.Search input:not(:focus) ~ .searchIcon {
+    animation: resetSearchIcon 0.9s ease-in-out forwards;/* bunu focus ta koydugumda hic hareket etmiyor*/
+
+}
+@keyframes moveSearchIcon {
+    0%{
+        left: 6%;
+    }
+    99%{
+        left: 100%;
+
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes resetSearchIcon {
+    0%{
+        left: 90%;
+        opacity: 1;
+    }
+    100%{
+        left: 6%;
+
+    }
+}
+.login-signin{
+    height: 80%; 
+    width: 10%;
+    background: #223;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 110%;
+}
+.login-signin button{
+    width: 45%;
+    font-size: 70%;
+    border-radius: 10px;
+    color: aliceblue;
+    border: none;
+    background: #223;
+}
+.login-signin button:hover{
+    text-decoration: underline aliceblue;
+    cursor: pointer;
+}
+.AddNew{
+    padding: 0px 3px;
+    height: 80%;
+    font-size: 100%; 
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    background: #112; 
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.settings{
+    padding: 0px 3px;
+    height: 80%;
+    font-size: 100%; 
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    background: #112; 
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.settings span:hover,.AddNew span:hover{
+    animation: rotateIcon 0.9s ease-in-out forwards;
+}
+.settings span:not(hover),.AddNew span:not(hover){
+    animation: resetRotateIcon 0.5s ease-in-out forwards;
+}
+@keyframes rotateIcon {
+    0%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+@keyframes resetRotateIcon {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}
+.footer{
+    position: fixed;
+    width: 100%;
+    height: 5%;
+    bottom: 0;
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #112;
+    z-index: 2;
+}
+.footer div{
+    background: #223;
+    width: 30%;
+    height: 80%;
+    text-align: center;
+    border-radius: 10px;
+}
+@media (max-width:1024px){ 
+    .Nav{
+        width: 100%;
+    }
+}
+@media (max-width:800px){
+    
+    .AppName{
+        width: 15%;
+        font-size: 100%;
+    }
+    .Search{
+        width: 80%;
+    }
+    .Nav .login-signin ,.Nav .settings,.Nav .AddNew,.Nav .AppName{
+        display: none; 
+    }
+    .footer{
+        display: flex;
+    }
+}
+.material-symbols-outlined{
+    width: 100%;
+
+}

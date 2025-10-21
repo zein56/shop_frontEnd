@@ -1,0 +1,147 @@
+.CarBody{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+    
+} 
+
+*{
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+.CarBody .Car{
+    width: 80%;
+    height: 100%;
+    background: #292933;
+    display: flex;
+    justify-content: space-around;
+}
+.CarBody .Car .img-des{
+    width: 40%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0px;
+}
+
+.CarBody .Car .img-des .images{
+    width: 100%; 
+    aspect-ratio: 1 / 3;
+    max-height: 420px;
+    border-bottom: 1px solid whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.CarBody .Car .img-des .images .selectedImg {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding: 10px;
+}
+.CarBody .Car .img-des .images .selectedImg img{
+    height: 100%;
+    box-shadow: 0px 1px 50px whitesmoke;
+
+}
+.CarBody .Car .img-des .images .allImgs{ 
+    height: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+} 
+
+.CarBody .Car .img-des .images .allImgs img{
+    height: 35%;
+    cursor: pointer;
+}
+.CarBody .Car .img-des .description{
+    width: 95%;
+    border: 1px dotted #122;
+    padding: 2.5%;
+    overflow: scroll;
+}
+.CarBody .Car .info{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.CarBody .Car .info div{
+    margin: 25px 0px;
+    border-bottom: 3px dashed #122;
+}
+.Celler{
+    position: relative;
+    width: 25%;
+}
+
+.Celler .CellerInfo{
+    width: 100%;
+    border: 1px solid whitesmoke;
+    display: flex; 
+    flex-direction: column;
+}
+.carSettings{
+    width: 100%;
+    height: 50px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    position: relative;     
+}
+.carSettings button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 30px;
+    background-color: #292933;
+    color: whitesmoke;
+    font-weight: 400;
+    font-size: x-large;
+    transition: all 0.2s;
+}
+.carSettings button p{ 
+    position: relative;
+    top:2px;
+}
+.carSettings button:hover{
+    color: red;
+    cursor: pointer;
+    background: #122;
+}
+.carSettings button:active p{
+        top:0px;
+        left: -2px;
+}
+
+@media (max-width:1024px){
+    .CarBody .Car{
+        width: 90%;
+        flex-direction: column;
+        padding-top: 5%;
+    }
+    .CarBody .Car .img-des,.CarBody .Car .info,.CarBody .Car .Celler{
+        position: static;
+        width: 100%; 
+        background: #292933;
+    }
+    .CarBody .Car .Celler{
+        padding-bottom: 40px;
+    }
+    .CarBody .Car .Celler .carSettings{
+        position: absolute;
+        top: 4%;
+        width: 90%;
+        background: #323233;
+    }
+}
